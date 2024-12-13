@@ -20,80 +20,155 @@
   <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow" alt="Follow us on Twitter"></a>
 </p>
   <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+Here's the revised `README.md` without Docker instructions:  
 
-## Description
+```markdown
+# Project Setup Instructions
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+This repository contains different branches for various database setups: `main`, `mongodb/mongoose`, `sql/prisma`, and `postgres/prisma`. Follow the instructions below to set up the project for the desired branch after cloning the repository.
 
-## Project setup
+---
 
-```bash
-$ pnpm install
-```
+## General Steps for All Branches
 
-## Compile and run the project
+1. **Clone the Repository**:
+   ```bash
+   git clone <repository_url>
+   ```
 
-```bash
-# development
-$ pnpm run start
+2. **Navigate to the Repository**:
+   ```bash
+   cd <repository_name>
+   ```
 
-# watch mode
-$ pnpm run start:dev
+3. **Switch to the Desired Branch**:
+   - For the default setup:
+     ```bash
+     git checkout main
+     ```
+   - For MongoDB/Mongoose setup:
+     ```bash
+     git checkout mongodb/mongoose
+     ```
+   - For SQL/Prisma setup:
+     ```bash
+     git checkout sql/prisma
+     ```
+   - For Postgres/Prisma setup:
+     ```bash
+     git checkout postgres/prisma
+     ```
 
-# production mode
-$ pnpm run start:prod
-```
+4. **Install Dependencies**:
+   ```bash
+   pnpm install
+   ```
 
-## Run tests
+---
+
+## Branch-Specific Setup Instructions
+
+### `main` Branch
+
+This branch contains the default NestJS setup.
+
+1. **Run the Application**:
+   ```bash
+   # development mode
+   pnpm run start:dev
+   ```
+
+2. The application will start on `http://localhost:3000`.
+
+---
+
+### `mongodb/mongoose` Branch
+
+This branch uses MongoDB with Mongoose.
+
+1. **Install and Start MongoDB**:
+   - Install MongoDB locally by following the [MongoDB installation guide](https://www.mongodb.com/docs/manual/installation/).
+   - Start MongoDB:
+     ```bash
+     mongod
+     ```
+
+2. **Configure the `.env` File**:
+   Create a `.env` file in the root directory and specify your MongoDB connection string:
+   ```env
+   DATABASE_URL=mongodb://localhost:27017/your-database-name
+   ```
+
+3. **Run the Application**:
+   ```bash
+   pnpm run start:dev
+   ```
+
+---
+
+### `sql/prisma` Branch
+
+This branch uses SQL databases with Prisma.
+
+1. **Set Up Your SQL Database**:
+   - Install and start your SQL database (e.g., MySQL).
+   - Create a new database in your SQL server for this application.
+
+2. **Configure the `.env` File**:
+   Create a `.env` file in the root directory and specify your database connection string:
+   ```env
+   DATABASE_URL=mysql://username:password@localhost:3306/your-database-name
+   ```
+
+3. **Run Prisma Migrations**:
+   ```bash
+   pnpm prisma migrate dev
+   ```
+
+4. **Run the Application**:
+   ```bash
+   pnpm run start:dev
+   ```
+
+---
+
+### `postgres/prisma` Branch
+
+This branch uses PostgreSQL with Prisma.
+
+1. **Install and Start PostgreSQL**:
+   - Install PostgreSQL by following the [PostgreSQL installation guide](https://www.postgresql.org/download/).
+   - Start PostgreSQL and create a new database for this application.
+
+2. **Configure the `.env` File**:
+   Create a `.env` file in the root directory and specify your PostgreSQL connection string:
+   ```env
+   DATABASE_URL=postgresql://username:password@localhost:5432/your-database-name
+   ```
+
+3. **Run Prisma Migrations**:
+   ```bash
+   pnpm prisma migrate dev
+   ```
+
+4. **Run the Application**:
+   ```bash
+   pnpm run start:dev
+   ```
+
+---
+
+## Run Tests
 
 ```bash
 # unit tests
-$ pnpm run test
+pnpm run test
 
-# e2e tests
-$ pnpm run test:e2e
-
-# test coverage
-$ pnpm run test:cov
 ```
 
-## Deployment
-
-When you're ready to deploy your NestJS application to production, there are some key steps you can take to ensure it runs as efficiently as possible. Check out the [deployment documentation](https://docs.nestjs.com/deployment) for more information.
-
-If you are looking for a cloud-based platform to deploy your NestJS application, check out [Mau](https://mau.nestjs.com), our official platform for deploying NestJS applications on AWS. Mau makes deployment straightforward and fast, requiring just a few simple steps:
-
-```bash
-$ pnpm install -g mau
-$ mau deploy
-```
-
-With Mau, you can deploy your application in just a few clicks, allowing you to focus on building features rather than managing infrastructure.
-
-## Resources
-
-Check out a few resources that may come in handy when working with NestJS:
-
-- Visit the [NestJS Documentation](https://docs.nestjs.com) to learn more about the framework.
-- For questions and support, please visit our [Discord channel](https://discord.gg/G7Qnnhy).
-- To dive deeper and get more hands-on experience, check out our official video [courses](https://courses.nestjs.com/).
-- Deploy your application to AWS with the help of [NestJS Mau](https://mau.nestjs.com) in just a few clicks.
-- Visualize your application graph and interact with the NestJS application in real-time using [NestJS Devtools](https://devtools.nestjs.com).
-- Need help with your project (part-time to full-time)? Check out our official [enterprise support](https://enterprise.nestjs.com).
-- To stay in the loop and get updates, follow us on [X](https://x.com/nestframework) and [LinkedIn](https://linkedin.com/company/nestjs).
-- Looking for a job, or have a job to offer? Check out our official [Jobs board](https://jobs.nestjs.com).
-
-## Support
-
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+---
 
 ## License
 
-Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+This project is [MIT licensed](./LICENSE).
+```
